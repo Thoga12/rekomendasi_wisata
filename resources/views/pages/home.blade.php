@@ -71,7 +71,7 @@
 </head>
 <body>
     {{-- <div class="relative w-full min-h-screen bg-gradient-to-b from-blue-900 to-blue-700 overflow-hidden"> --}}
-    <div class="w-full h-full relative bg-cover bg-center" style="background-image: url('{{ asset('build/assets/images/backgrounds.png') }}')">
+    <div class="w-full h-full relative bg-cover bg-center" style="background-image: url('{{ asset('build/assets/images/backgrounds.jpg') }}')">
 
         <!-- Rain Effect -->
         <div class="rain">

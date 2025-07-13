@@ -197,7 +197,7 @@
                             <i class="fas fa-map-marker-alt text-blue-600 mr-1"></i>
                             Nama Destinasi <span class="text-red-500">*</span>
                         </label>
-                        <input type="text" id="nama_destinasi" name="nam" required
+                        <input type="text" id="nama_destinasi" name="name" required
                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                placeholder="Masukkan nama destinasi wisata">
                     </div>

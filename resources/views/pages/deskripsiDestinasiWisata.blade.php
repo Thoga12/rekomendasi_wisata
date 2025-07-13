@@ -13,7 +13,21 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     {{-- </head> --}}
 
-
+    <style>
+        .star {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .star:hover {
+            transform: scale(1.1);
+        }
+        .star.filled {
+            color: #fbbf24;
+        }
+        .star.empty {
+            color: #d1d5db;
+        }
+    </style>
     <div class="min-h-screen flex flex-col">
         <!-- Navbar -->
 
@@ -164,8 +178,9 @@
                                         class="ml-1 text-gray-600 text-xs">({{ number_format($rating->rating) }})</span>
                                 </div>
                                 <p class="text-xs">
-                                    Komentar tentang destinasi wisata ini, pemandangan yang indah, udara yang segar, dan
-                                    berbagai aktivitas menarik yang bisa dinikmati oleh pengunjung dari segala usia.
+                                    {{-- Komentar tentang destinasi wisata ini, pemandangan yang indah, udara yang segar, dan
+                                    berbagai aktivitas menarik yang bisa dinikmati oleh pengunjung dari segala usia. --}}
+                                    {{ $rating->comment }}
                                 </p>
                             </div>
                         @endforeach

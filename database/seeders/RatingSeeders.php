@@ -7,6 +7,7 @@ use App\Models\Ratings;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class RatingSeeders extends Seeder
 {
@@ -15,6 +16,8 @@ class RatingSeeders extends Seeder
      */
     public function run(): void
     {
+
+        DB::table('ratings')->truncate();
 
         $users = User::all();
         $destinations = Destinasi::all();
@@ -34,6 +37,7 @@ class RatingSeeders extends Seeder
                     'user_id' => $user->id,
                     'destinasi_id' => $destination->id,
                     'rating' => rand(3, 5), // Rating antara 3–5 agar tidak terlalu negatif
+                    'comment' => "Wah Tempatnya Sangat Bagus Rekomendasi Bagus Banget Kalau Mau Liburan Ditemapat ini"
                 ]);
             }
         }

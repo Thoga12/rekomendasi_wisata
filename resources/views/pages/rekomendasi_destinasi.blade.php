@@ -205,6 +205,12 @@
     @else
         <p class="text-center">Belum ada rekomendasi tersedia. Silahkan Rating Beberapa Tempat Yang Pernah Dikunjungi Terlebih Dahulu</p>
     @endif
+    <script>
+
+        // console.table($evaluasiData);
+        const evaluasiData = <?php echo json_encode($evaluasiData); ?>;
+        console.table(evaluasiData);
+    </script>
 @endsection
 
 {{-- <!DOCTYPE html>

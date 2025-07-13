@@ -162,7 +162,7 @@
     <div class="w-full h-full relative overflow-hidden">
         <!-- Background Image -->
         <div class="w-full h-full bg-cover bg-center"
-            style="background-image: url('{{ asset('build/assets/images/backgrounds.png') }}')">
+            style="background-image: url('{{ asset('build/assets/images/backgrounds.jpg') }}')">
             <!-- Rain Effect -->
             <div class="rain">
                 <div class="drop"></div>
