@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Destinasi;
 use App\Models\Ratings;
+use App\Models\UserHistory;
+
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -12,11 +14,25 @@ class HomeAdminController extends Controller
     public function home()
     {
         $destinasi = Destinasi::all()->count();
+        $histories = UserHistory::latest()->take(5)->get(); 
         $users = User::all()->count();
         // dd($destinasi);
         return view('pages.dashboard', [
             'destinasi' => $destinasi,
+            'histories' => $histories,
             'users' => $users
+        ]);
+    }
+
+    public function ratings()
+    {
+        // $destinasi = Destinasi::all()->count();
+        $ratings = Ratings::with('user', 'destination')->get();
+        // $users = User::all()->count();
+        // dd($ratings);
+        return view('pages.ratings', [
+            'rewiews' => $ratings,
+            // 'users' => $users
         ]);
     }
 

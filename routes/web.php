@@ -24,6 +24,7 @@ Route::get('admin/pengguna', function () {
 
 Route::get('/', [HomeUserController::class, 'home'] );
 Route::get('admin/dashboard', [HomeAdminController::class, 'home'] )->middleware('auth');
+Route::get('/ratingsss', [HomeAdminController::class, 'ratings'] )->middleware('auth');
 Route::get('/destinasi', [HomeUserController::class, 'destinasi'] )->name('destinasi')->middleware('auth');
 Route::get('/tentang', [HomeUserController::class, 'tentang'] )->name('tentang');
 Route::get('/deskripsi-destinasi/{destId}', [HomeUserController::class, 'deskripsiDestinasi'] )->name('deskripsiDestinasi');

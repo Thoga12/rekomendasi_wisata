@@ -11,7 +11,7 @@
                 <nav class="flex space-x-8">
                     <a href="/admin/dashboard" class="text-blue-600 border-b-2 border-blue-600 pb-2 font-medium">Dashboard</a>
                     <a href="{{ route('destinations.index') }}" class="text-gray-600 hover:text-gray-900 pb-2">Wisata</a>
-                    {{-- <a href="#" class="text-gray-600 hover:text-gray-900 pb-2">Kategori</a> --}}
+                    <a href="/ratingsss" class="text-gray-600 hover:text-gray-900 pb-2">Rating</a>
                     <a href="/users" class="text-gray-600 hover:text-gray-900 pb-2">Pengguna</a>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf

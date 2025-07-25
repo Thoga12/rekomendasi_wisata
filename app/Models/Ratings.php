@@ -15,6 +15,6 @@ class Ratings extends Model
 
     public function destination()
     {
-        return $this->belongsTo(Destinasi::class);
+        return $this->belongsTo(Destinasi::class , 'destinasi_id');
     }
 }

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+
+use App\Models\UserHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+// use App\Models\UserHistory;
 
 class UsersController extends Controller
 {
@@ -43,7 +46,12 @@ class UsersController extends Controller
             'password' => Hash::make($request->password),
             'role' => $request->role,
         ]);
-
+        UserHistory::create([
+            'user_id' => auth()->id(),
+            'activity' => 'Menambahkan Users',
+            'ip_address' => request()->ip(),
+            'user_agent' => request()->userAgent(),
+        ]);
         return redirect()->route('users.index')->with('success', 'User berhasil ditambahkan.');
     }
 
@@ -105,7 +113,12 @@ class UsersController extends Controller
 
 
         $user->update($data);
-
+        UserHistory::create([
+            'user_id' => auth()->id(),
+            'activity' => 'Edit Users',
+            'ip_address' => request()->ip(),
+            'user_agent' => request()->userAgent(),
+        ]);
         return redirect()->route('users.index')->with('success', 'User berhasil diperbarui.');
 
     }
@@ -116,6 +129,12 @@ class UsersController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
+        UserHistory::create([
+            'user_id' => auth()->id(),
+            'activity' => 'Hapus Users Ini',
+            'ip_address' => request()->ip(),
+            'user_agent' => request()->userAgent(),
+        ]);
         return redirect()->route('users.index')->with('success', 'User berhasil dihapus.');
 
     }

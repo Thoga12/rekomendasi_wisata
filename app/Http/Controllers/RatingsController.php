@@ -15,6 +15,12 @@ class RatingsController extends Controller
         ]);
 
         // Update jika user sudah pernah rating sebelumnya
+        UserHistory::create([
+            'user_id' => auth()->id(),
+            'activity' => 'Memberi Rating',
+            'ip_address' => request()->ip(),
+            'user_agent' => request()->userAgent(),
+        ]);
         Ratings::updateOrCreate(
             [
                 'user_id' => auth()->id(),

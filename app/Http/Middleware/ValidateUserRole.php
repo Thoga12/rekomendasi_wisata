@@ -16,7 +16,8 @@ class ValidateUserRole
     public function handle(Request $request, Closure $next, string $role): Response
     {
         if ($request->user()->role !== $role) {
-            return response()->json(['message' => 'Unauthorized'], Response::HTTP_FORBIDDEN);
+            // return response()->json(['message' => 'Unauthorized'], Response::HTTP_FORBIDDEN);
+            abort(403, 'Akses Ditolak');
         }
 
         // return $next($request);

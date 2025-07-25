@@ -95,17 +95,18 @@
             <div class="bg-white rounded-lg shadow-sm p-6">
                 <h2 class="text-xl font-semibold text-gray-900 mb-4">Aktivitas Terbaru</h2>
                 <div class="space-y-4">
+                @forelse ($histories as $history)
                     <div class="flex items-center p-3 bg-gray-50 rounded-lg">
                         <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
                             <i class="fas fa-plus text-blue-600 text-sm"></i>
                         </div>
                         <div>
-                            <p class="text-sm font-medium text-gray-900">Wisata baru ditambahkan</p>
-                            <p class="text-xs text-gray-500">235 jam yang lalu</p>
+                            <p class="text-sm font-medium text-gray-900">{{ $history->activity }} </p>
+                            <p class="text-xs text-gray-500">{{ $history->created_at->diffForHumans() }}</p>
                         </div>
                     </div>
 
-                    <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+                    {{-- <div class="flex items-center p-3 bg-gray-50 rounded-lg">
                         <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
                             <i class="fas fa-user-plus text-green-600 text-sm"></i>
                         </div>
@@ -113,8 +114,10 @@
                             <p class="text-sm font-medium text-gray-900">Pengguna baru mendaftar</p>
                             <p class="text-xs text-gray-500">5 jam yang lalu</p>
                         </div>
-                    </div>
-
+                    </div> --}}
+                 @empty
+        <p class="text-sm text-gray-500">Belum ada aktivitas.</p>
+    @endforelse
 
 
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Destinasi;
+use App\Models\UserHistory;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
@@ -47,6 +49,12 @@ class DestinasiController extends Controller
         }
 
         Destinasi::create($data);
+        UserHistory::create([
+            'user_id' => auth()->id(),
+            'activity' => 'Tambhakan Wisata',
+            'ip_address' => request()->ip(),
+            'user_agent' => request()->userAgent(),
+        ]);
         return redirect()->route('destinations.index')->with('success', 'Destinasi berhasil ditambahkan.');
     }
 
@@ -88,7 +96,12 @@ class DestinasiController extends Controller
         }
 
         $destination->update($data);
-
+        UserHistory::create([
+            'user_id' => auth()->id(),
+            'activity' => 'Edit Wisata',
+            'ip_address' => request()->ip(),
+            'user_agent' => request()->userAgent(),
+        ]);
         return redirect()->route('destinations.index')->with('success', 'Destinasi berhasil diperbarui.');
     }
 
@@ -102,7 +115,12 @@ class DestinasiController extends Controller
         }
 
         $destination->delete();
-
+        UserHistory::create([
+            'user_id' => auth()->id(),
+            'activity' => 'Hapus Wisata',
+            'ip_address' => request()->ip(),
+            'user_agent' => request()->userAgent(),
+        ]); 
         return redirect()->route('destinations.index')->with('success', 'Destinasi berhasil dihapus.');
     }
 }

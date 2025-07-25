@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserHistory;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -28,6 +30,14 @@ class AuthController extends Controller
             $request->session()->regenerate(); // untuk keamanan sesi (session fixation)
 
             $user = Auth::user();
+            
+            UserHistory::create([
+                'user_id' => auth()->id(),
+                'activity' => 'Login',
+                'ip_address' => request()->ip(),
+                'user_agent' => request()->userAgent(),
+            ]);
+            
             switch ($user->role) {
                 case 'admin':
                     return redirect()->intended('/admin/dashboard');
